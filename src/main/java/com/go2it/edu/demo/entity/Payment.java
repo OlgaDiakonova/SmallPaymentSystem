@@ -1,24 +1,21 @@
-package com.go2it.edu.demo.service;
+package com.go2it.edu.demo.entity;
 
 import org.springframework.beans.factory.annotation.Value;
 
-import javax.inject.Named;
-import java.time.LocalDate;
+public class Payment {
 
-@Named
-public class PaymentService implements IPaymentProcessorService {
-    @Value("123")
     private int number;
-    @Value("2020-04-03")
     private String date;
-    @Value("Ivan Ivanov")
     private String clientName;
-    @Value("123.00")
-    private double sum;
 
-    public PaymentService() {
-
+    public Payment(int number, String date, String clientName, double sum) {
+        this.number = number;
+        this.date = date;
+        this.clientName = clientName;
+        this.sum = sum;
     }
+
+    private double sum;
 
     public int getNumber() {
         return number;
@@ -52,8 +49,6 @@ public class PaymentService implements IPaymentProcessorService {
         this.sum = sum;
     }
 
-    @Override
-    public void processPayment() {
-        System.out.println("Payment is processed!");
+    public Payment() {
     }
 }
