@@ -1,10 +1,10 @@
 package com.go2it.edu.demo.service;
 
 import com.go2it.edu.demo.entity.Payment;
+import org.springframework.stereotype.Service;
 
-import javax.inject.Named;
 
-@Named
+@Service
 public class PaymentProcessService implements IPaymentProcessorService {
 
     public PaymentProcessService() {
