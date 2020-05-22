@@ -1,6 +1,7 @@
 package com.go2it.edu.demo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "departments")
 public class Department {
@@ -8,7 +9,9 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int department_id;
     private String department_name;
-    private int manager_id;
+
+    @OneToMany(mappedBy = "departments", fetch = FetchType.EAGER)
+    private List<Employee> employees;
     private int location_id;
 
     public Department() {
@@ -30,16 +33,17 @@ public class Department {
         this.department_name = department_name;
     }
 
-    public int getManager_id() {
-        return manager_id;
-    }
-
-    public void setManager_id(int manager_id) {
-        this.manager_id = manager_id;
-    }
 
     public int getLocation_id() {
         return location_id;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public void setLocation_id(int location_id) {
@@ -51,8 +55,8 @@ public class Department {
         return "Department{" +
                 "department_id=" + department_id +
                 ", department_name='" + department_name + '\'' +
-                ", manager_id=" + manager_id +
-                ", location_id=" + location_id +
+//                ", manager_id=" + manager_id +
+//                ", location_id=" + location_id +
                 '}';
     }
 }

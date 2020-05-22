@@ -18,7 +18,9 @@ public class Employee {
     private double salary;
     private double commission_pct;
     private int manager_id;
-    private int department_id;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 
     public Employee() {
     }
@@ -103,12 +105,12 @@ public class Employee {
         this.manager_id = manager_id;
     }
 
-    public int getDepartment_id() {
-        return department_id;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartment_id(int department_id) {
-        this.department_id = department_id;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     @Override
@@ -124,7 +126,18 @@ public class Employee {
                 ", salary=" + salary +
                 ", commission_pct=" + commission_pct +
                 ", manager_id=" + manager_id +
-                ", department_id=" + department_id +
+                ", department_id=" + department +
                 '}';
+    }
+
+    @ManyToOne(optional = false)
+    private Department departments;
+
+    public Department getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Department departments) {
+        this.departments = departments;
     }
 }

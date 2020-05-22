@@ -4,7 +4,6 @@ import com.go2it.edu.demo.entity.Employee;
 import com.go2it.edu.demo.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class EmployeeService implements IEmplyoeeService {
@@ -17,9 +16,9 @@ public class EmployeeService implements IEmplyoeeService {
         return employeeRepository.findById(id);
     }
 
-    @Override
-    @Transactional
-    public void save(Employee employee) {
-        employeeRepository.save(employee);
-    }
+//    @Override
+//    @Transactional
+//    public void save(Employee employee) {
+//        employeeRepository.save(employee);
+//    }
 }

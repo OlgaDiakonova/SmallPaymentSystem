@@ -21,6 +21,10 @@ public class EmployeeRepository implements IEmployeeRepository {
 
     @Override
     public void save(Employee employee) {
-        em.persist(employee);
+        if (employee.getEmployee_id() == 0) {
+            em.persist(employee);
+        } else {
+            em.merge(employee);
+        }
     }
 }
